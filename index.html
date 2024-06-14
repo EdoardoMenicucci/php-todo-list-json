@@ -23,7 +23,7 @@
       <h1>Lista delle cose da fare:</h1>
       <div>
         <ul>
-          <li v-for="todo in todolist">
+          <li v-for="todo , i in todolist">
             {{todo.cosa}}
             <!-- Icone FontAwsome -->
             <span
@@ -36,6 +36,7 @@
                 class="fa-regular fa-circle-xmark red"
               ></i
             ></span>
+            <button @click="deleteTask(i)" class="absolute">elimina</button>
           </li>
         </ul>
         <!-- Input cose da fare -->

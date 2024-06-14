@@ -4,7 +4,7 @@ $dati = file_get_contents("data.json");
 $newData = '';
 
 
-if (isset($_POST['cosa'])) { // SE RICEVO DATI IN POST LI AGGIORNO AL DATA.JSON
+if (isset($_POST['cosa']) && $_POST['cosa'] != '') { // SE RICEVO DATI IN POST LI AGGIORNO AL DATA.JSON E NON SONO STRINGA VUOTA
 
     //converto il json in un array associativo php
     $allTask = json_decode($dati, true);

@@ -23,6 +23,19 @@ createApp({
         //aggiorno la lista con i dati aggiornati con la nuova task
         this.todolist = result.data;
       });
+      this.newTask = "";
+    },
+    deleteTask(index) {
+      const indice = {
+        indice: `${index}`,
+      };
+      //mando l'indice da rimovere
+      axios.post("delete.php", indice, this.config).then((result) => {
+        console.log(result);
+        //aggiorno la lista con i dati aggiornati con la nuova task
+        this.todolist = result.data;
+      });
+      //this.todolist[index] = "";
     },
   },
   mounted() {
