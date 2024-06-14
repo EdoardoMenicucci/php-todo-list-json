@@ -26,7 +26,7 @@
           <li v-for="todo , i in todolist">
             {{todo.cosa}}
             <!-- Icone FontAwsome -->
-            <span
+            <span @click="changeStatus(i)"
               ><i
                 v-if="todo.stato == 'done'"
                 class="fa-regular fa-circle-check green"

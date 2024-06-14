@@ -13,6 +13,7 @@ createApp({
     };
   },
   methods: {
+    //Esercizio base
     addTask() {
       const task = {
         cosa: this.newTask,
@@ -25,10 +26,13 @@ createApp({
       });
       this.newTask = "";
     },
+
+    //Bonus elimina task
     deleteTask(index) {
       const indice = {
         indice: `${index}`,
       };
+
       //mando l'indice da rimovere
       axios.post("delete.php", indice, this.config).then((result) => {
         console.log(result);
@@ -36,6 +40,22 @@ createApp({
         this.todolist = result.data;
       });
       //this.todolist[index] = "";
+    },
+
+    //Bonus cambia stato
+
+    changeStatus(index) {
+      //recupero l'indice della posizione cliccata
+      const indice = {
+        indice: `${index}`,
+      };
+
+      //mando l'indice per cambiare classe
+      axios.post("updateTask.php", indice, this.config).then((result) => {
+        console.log(result);
+        //aggiorno la lista con i dati aggiornati con la nuova task
+        this.todolist = result.data;
+      });
     },
   },
   mounted() {
