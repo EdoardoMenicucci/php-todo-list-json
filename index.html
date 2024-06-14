@@ -10,6 +10,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"></script>
   </head>
@@ -19,8 +23,29 @@
       <h1>Lista delle cose da fare:</h1>
       <div>
         <ul>
-          <li v-for="todo in todolist">{{todo}}</li>
+          <li v-for="todo in todolist">
+            {{todo.cosa}}
+            <!-- Icone FontAwsome -->
+            <span
+              ><i
+                v-if="todo.stato == 'done'"
+                class="fa-regular fa-circle-check green"
+              ></i>
+              <i
+                v-if="todo.stato == 'notDone'"
+                class="fa-regular fa-circle-xmark red"
+              ></i
+            ></span>
+          </li>
         </ul>
+        <!-- Input cose da fare -->
+        <input
+          type="text"
+          v-model="newTask"
+          placeholder="aggiungi alla lista"
+        />
+        <!-- Button -->
+        <button @click="addTask">Aggiungi</button>
       </div>
     </main>
 
